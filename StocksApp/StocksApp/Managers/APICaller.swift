@@ -107,37 +107,61 @@ final class APICaller
         sharedTaskOptimizer.appendToQueue(taskToAppend: task)
     }
     
-    private func getCompanyNews(for type: NewsViewController.Type, completion: @escaping (Result<[CompanyNews],Error>) -> Void)
+    /// Gets data for both API Endpoints
+    internal func getNews(for type: NewsType, completion: @escaping (Result<[NewsStories],Error>) -> Void)
     {
+        switch type
+        {
+        case .topStories:
+            let queryParams : [String : String] = ["category" : "general"]
+            let urlToUse = createURL(for: .news, queryParams: queryParams)
+            guard let safeURL = urlToUse else {
+                completion(.failure(APICallerError.invalidURL))
+                return
+            }
+            // success
+            initiateRequest(url: safeURL, expecting: [NewsStories].self) { result in
+                switch result
+                {
+                case .success(let result):
+                    completion(.success(result))
+                
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
         
-        
-        
-        
-        
-        
-    }
-
-    internal func getTopNews(for type: NewsType, completion: @escaping (Result<[TopNews],Error>) -> Void) // changed type to NewsType
-    {
-        let queryParams : [String : String] = ["category" : "general"]
-        let urlToUse = createURL(for: .news, queryParams: queryParams)
-        // now that we got the URL to use we can use this URL to initiate a request
-        guard let safeURL = urlToUse else {
-            completion(.failure(APICallerError.invalidURL))
-            return
-        }
-        initiateRequest(url: safeURL, expecting: [TopNews].self) { result in
-            switch result
-            {
-            case .success(let result):
-                completion(.success(result))
+        case .companyNews(symbol: let symbol):
+            let today = Date()
+            let oneWeekback = today.addingTimeInterval(-(3600 * 24 * 7))
+           
+            let oneWeekBackAsString = DateFormatter.newsDateFormatter.string(from: oneWeekback)
+            let todayDateAsString = DateFormatter.newsDateFormatter.string(from: today)
             
-            case .failure(let error):
-                completion(.failure(error))
+            let queryParams : [String : String] = [
+                "symbol" : symbol.lowercased(),
+                "from" : oneWeekBackAsString,
+                "to" : todayDateAsString
+            ]
+            let urlToUse = createURL(for: .companyNews, queryParams: queryParams)
+            guard let safeURL = urlToUse else {
+                completion(.failure(APICallerError.invalidURL))
+                return
+            }
+            initiateRequest(url: safeURL, expecting: [NewsStories].self) { result in
+                switch(result)
+                {
+                
+                case .success(let result):
+                    completion(.success(result))
+                
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
+        
     }
-    
     
     
     
