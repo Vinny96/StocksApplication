@@ -107,13 +107,17 @@ final class APICaller
         sharedTaskOptimizer.appendToQueue(taskToAppend: task)
     }
     
-    private func getGeneralNews(for type: NewsViewController.Type, completion: @escaping (Result<GeneralNews,Error>) -> Void)
+    private func getCompanyNews(for type: NewsViewController.Type, completion: @escaping (Result<[CompanyNews],Error>) -> Void)
     {
-        let queryParams : [String : String] = [""]
+        
+        
+        
+        
+        
         
     }
-    
-    private func getGeneralNews(for type: NewsViewController.Type, completion: @escaping (Result<[GeneralNews],Error>) -> Void)
+
+    private func getGeneralNews(for type: NewsViewController.Type, completion: @escaping (Result<[TopNews],Error>) -> Void)
     {
         let queryParams : [String : String] = ["category" : "general"]
         let urlToUse = createURL(for: .topNews, queryParams: queryParams)
@@ -122,7 +126,7 @@ final class APICaller
             completion(.failure(APICallerError.invalidURL))
             return
         }
-        initiateRequest(url: safeURL, expecting: [GeneralNews].self) { result in
+        initiateRequest(url: safeURL, expecting: [TopNews].self) { result in
             switch result
             {
             case .success(let result):
