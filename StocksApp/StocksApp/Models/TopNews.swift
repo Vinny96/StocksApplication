@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GeneralNews : Codable
+struct TopNews : Codable
 {
     /**
      "category": "top news",
@@ -21,7 +21,7 @@ struct GeneralNews : Codable
      "url": "https://www.marketwatch.com/story/holiday-earnings-forecasts-have-been-lumps-of-coal-so-far-and-here-come-the-biggest-ones-11635106579"
      */
     var category : String
-    var datetime : Int
+    var datetime : TimeInterval
     var headline : String
     var id : Int
     var image : String
