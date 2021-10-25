@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct TopNews : Codable
-{T
+struct NewsStories : Codable
+{
     var category : String
     var datetime : TimeInterval
     var headline : String
