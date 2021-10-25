@@ -18,9 +18,9 @@ class NewsViewController: UIViewController {
         return table
     }()
     
-    private var newsType : NewsType
-    private var stories : [String] = [String]() // this is going to have a dedicated model for it afterwards
-    
+    private var newsType : NewsType 
+    private var topNews : [NewsStories] = [NewsStories]() // this is going to have a dedicated model for it afterwards
+    private var apiHandler = APICaller.shared
     
     //MARK: - System called functions and Initializer
     override func viewDidLoad() {
@@ -59,9 +59,35 @@ class NewsViewController: UIViewController {
     }
     
     
-    private func fetchNews()
+    private func fetchNews() // renamed method back to fetchNews from fetchTopStories
     {
-        
+        switch newsType
+        {
+        case .topStories:
+            apiHandler.getNews(for: newsType) { result in
+                switch result
+                {
+                case .success(let result):
+                    print("Count for topStories is below")
+                    print(result.count)
+                
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        case .companyNews(symbol: let symbol):
+            apiHandler.getNews(for: .companyNews(symbol: symbol)) { result in
+                switch result
+                {
+                case .success(let result):
+                    print("Count for company news is below")
+                    print(result.count)
+                
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
         
     }
     

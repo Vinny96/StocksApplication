@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func debug()
     {
         // used for testing purposes 
-        
     }
 
 }

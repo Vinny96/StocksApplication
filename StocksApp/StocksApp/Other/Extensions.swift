@@ -20,6 +20,18 @@ extension UIView{
 }
 
 
+//MARK: - DateFormatter
+extension DateFormatter
+{
+    static let newsDateFormatter : DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        return dateFormatter
+    }()
+    
+    
+}
 
 
 //MARK: - Framing

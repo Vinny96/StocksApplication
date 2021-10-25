@@ -10,6 +10,6 @@ import Foundation
 internal enum Endpoint : String
 {
     case search
-    case news
-    case company
+    case news = "news"
+    case companyNews = "company-news"
 }
