@@ -133,7 +133,7 @@ final class APICaller
         
         case .companyNews(symbol: let symbol):
             let today = Date()
-            let oneWeekback = today.addingTimeInterval(-(3600 * 24 * 7))
+            let oneWeekback = today.addingTimeInterval(-(Constants.secondsInADay * 7))
            
             let oneWeekBackAsString = DateFormatter.newsDateFormatter.string(from: oneWeekback)
             let todayDateAsString = DateFormatter.newsDateFormatter.string(from: today)
