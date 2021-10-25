@@ -117,10 +117,10 @@ final class APICaller
         
     }
 
-    private func getGeneralNews(for type: NewsViewController.Type, completion: @escaping (Result<[TopNews],Error>) -> Void)
+    internal func getTopNews(for type: NewsType, completion: @escaping (Result<[TopNews],Error>) -> Void) // changed type to NewsType
     {
         let queryParams : [String : String] = ["category" : "general"]
-        let urlToUse = createURL(for: .topNews, queryParams: queryParams)
+        let urlToUse = createURL(for: .news, queryParams: queryParams)
         // now that we got the URL to use we can use this URL to initiate a request
         guard let safeURL = urlToUse else {
             completion(.failure(APICallerError.invalidURL))
