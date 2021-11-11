@@ -6,27 +6,38 @@
 //
 
 import XCTest
+@testable import StocksApp
 
-class StockSearchTestCase: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+final class StockSearchTestCase: XCTestCase {
+    // properties
+    let urlAsString = "https://finnhub.io/api/v1/search?q=Apple&token=c59jcq2ad3i93kd1rbn0"
+    var expectationToFulfil : XCTestExpectation!
+    
+    func test_StockSearchFunctionality()
+    {
+        guard let safeURL = URL(string: urlAsString) else {return}
+        expectationToFulfil = expectation(description: "Stock search functionality works.")
+        URLSession.shared.dataTask(with: safeURL) {[weak self] data, response, error in
+            guard let strongSelf = self else {return}
+            defer {
+                strongSelf.expectationToFulfil.fulfill()
+            }
+            do
+            {
+                let response = try XCTUnwrap(response as? HTTPURLResponse)
+                XCTAssertEqual(response.statusCode, 200)
+                let data = try XCTUnwrap(data)
+                XCTAssertNoThrow(try JSONDecoder().decode(SearchResponse.self, from: data))
+            }
+            catch
+            {
+                XCTFail("Either the URLResponse was not valid or there was a decoding error")
+            }
         }
+        .resume()
+        waitForExpectations(timeout: 60, handler: nil)
     }
+   
 
 }
