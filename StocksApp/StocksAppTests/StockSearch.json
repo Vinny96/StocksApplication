@@ -1,0 +1,137 @@
+{
+"count": 22,
+"result": [
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL",
+    "symbol": "AAPL",
+    "type": "Common Stock"
+    },
+    {
+    "description": "Apple",
+    "displaySymbol": "13RI.L",
+    "symbol": "13RI.L",
+    "type": ""
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPLEUR.SW",
+    "symbol": "AAPLEUR.SW",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPLCL.SN",
+    "symbol": "AAPLCL.SN",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL.VI",
+    "symbol": "AAPL.VI",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.SG",
+    "symbol": "APC.SG",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL.MI",
+    "symbol": "AAPL.MI",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.MU",
+    "symbol": "APC.MU",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.DU",
+    "symbol": "APC.DU",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL.BC",
+    "symbol": "AAPL.BC",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPLUSD.SW",
+    "symbol": "AAPLUSD.SW",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.BE",
+    "symbol": "APC.BE",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.HM",
+    "symbol": "APC.HM",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "0R2V.L",
+    "symbol": "0R2V.L",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.DE",
+    "symbol": "APC.DE",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.HA",
+    "symbol": "APC.HA",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL*.MX",
+    "symbol": "AAPL*.MX",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL.SW",
+    "symbol": "AAPL.SW",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "APC.F",
+    "symbol": "APC.F",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL-RM.ME",
+    "symbol": "AAPL-RM.ME",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPLE INC",
+    "displaySymbol": "AAPL.SN",
+    "symbol": "AAPL.SN",
+    "type": "Common Stock"
+    },
+    {
+    "description": "APPULSE CORP",
+    "displaySymbol": "APL.NE",
+    "symbol": "APL.NE",
+    "type": "Common Stock"
+    }
+  ]
+}
