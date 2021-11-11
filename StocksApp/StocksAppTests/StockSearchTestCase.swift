@@ -14,30 +14,25 @@ final class StockSearchTestCase: XCTestCase {
     let urlAsString = "https://finnhub.io/api/v1/search?q=Apple&token=c59jcq2ad3i93kd1rbn0"
     var expectationToFulfil : XCTestExpectation!
     
-    func test_StockSearchFunctionality()
+    func test_StockSearch_DecodingFunctionality() throws
     {
-        guard let safeURL = URL(string: urlAsString) else {return}
-        expectationToFulfil = expectation(description: "Stock search functionality works.")
-        URLSession.shared.dataTask(with: safeURL) {[weak self] data, response, error in
-            guard let strongSelf = self else {return}
-            defer {
-                strongSelf.expectationToFulfil.fulfill()
-            }
+        let tester = StockSearchTestClient(baseURLVal: FakeDataTaskMaker.dummyURL, sessionVal: try FakeDataTaskMaker(), responseQueueVal: nil)
+        tester.getStockForGivenSmybol { data, error in
+            
+            XCTAssertNil(error)
             do
             {
-                let response = try XCTUnwrap(response as? HTTPURLResponse)
-                XCTAssertEqual(response.statusCode, 200)
-                let data = try XCTUnwrap(data)
-                XCTAssertNoThrow(try JSONDecoder().decode(SearchResponse.self, from: data))
+                let safeData = try XCTUnwrap(data)
+                XCTAssertNoThrow(try JSONDecoder().decode(SearchResponse.self, from: safeData), "The JSON can be decoded successfully")
             }
             catch
             {
-                XCTFail("Either the URLResponse was not valid or there was a decoding error")
+                XCTFail("The data could not be unwrapped or the data could not be decoded properly.")
             }
         }
-        .resume()
-        waitForExpectations(timeout: 60, handler: nil)
     }
-   
 
+    
 }
+
+

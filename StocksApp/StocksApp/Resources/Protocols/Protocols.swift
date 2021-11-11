@@ -17,3 +17,10 @@ protocol NewsHeaderViewDelegate: AnyObject
 {
     func newsHeaderViewDidTapAddButton(headerView : UITableViewHeaderFooterView)
 }
+
+
+// For Unit Testing
+protocol DataTaskMaker
+{
+    func dataTask(with url : URL, completionHandler : @escaping(Data?, URLResponse?,Error?) -> Void) -> URLSessionDataTask
+}
