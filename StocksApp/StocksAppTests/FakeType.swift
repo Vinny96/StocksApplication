@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MockType : String
+enum FakeType : String
 {
     case StockSearch = "StockSearch"
     case NewsStories = "NewsStories"
