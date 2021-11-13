@@ -10,7 +10,7 @@ import Foundation
 struct NewsStories : Codable
 {
     var category : String
-    var datetime : TimeInterval
+    var datetime : Int
     var headline : String
     var id : Int
     var image : String
